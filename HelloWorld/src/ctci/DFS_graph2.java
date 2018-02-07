@@ -22,7 +22,7 @@ public class DFS_graph2 {
     void addEdge(int v, int w){
         adj[v].add(w);
     }
-
+    //recursive
     void DFSUtil(int v, boolean visited[]){
         visited[v]=true;
         System.out.print(v+" ");
@@ -34,7 +34,7 @@ public class DFS_graph2 {
                 DFSUtil(n,visited);
         }
     }
-
+    //iterative using stack
     void DFS(int s){
         boolean visited[] = new boolean[V];
         Stack<Integer> stack = new Stack<>();

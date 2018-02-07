@@ -2,6 +2,7 @@ package ctci;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Created by sunil on 10/31/17.
@@ -22,22 +23,36 @@ public class DFS_graph {
     void addEdge(int v, int w){
         adj[v].add(w);
     }
-
+    //Recursive
     void DFSUtil(int v, boolean visited[]){
-        visited[v]=true;
+        visited[v] = true;
         System.out.print(v+" ");
-
-        Iterator<Integer> i = adj[v].listIterator();
-        while(i.hasNext()){
-            int n=i.next();
-            if(!visited[n])
-                DFSUtil(n,visited);
+        Iterator<Integer> iter = adj[v].listIterator();
+        while(iter.hasNext()){
+            int n=iter.next();
+            while(!visited[n])
+                DFSUtil(n, visited);
         }
     }
 
     void DFS(int v){
         boolean visited[] = new boolean[V];
-        DFSUtil(v,visited);
+        //Recursive
+        //DFSUtil(v,visited);
+        //iterative;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(v);
+        while(!stack.isEmpty()){
+            v=stack.pop();
+            System.out.print(v+" ");
+            visited[v]=true;
+            Iterator<Integer> iter = adj[v].listIterator();
+            while(iter.hasNext()){
+                int n=iter.next();
+                if(!visited[n])
+                    stack.push(n);
+            }
+        }
     }
     public static void main(String[] args){
         DFS_graph dfs = new DFS_graph(4);

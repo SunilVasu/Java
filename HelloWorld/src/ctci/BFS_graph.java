@@ -26,6 +26,20 @@ public class BFS_graph {
     void BFS(int s){
         boolean[] visited = new boolean[V];
         Queue<Integer> queue = new LinkedList<>();
+        queue.add(s);
+        while(!queue.isEmpty()){
+            s=queue.poll();
+            System.out.print(s+" ");
+            visited[s]=true;
+            Iterator<Integer> iter = adj[s].listIterator();
+            while(iter.hasNext()){
+                int n=iter.next();
+                if(!visited[n])
+                    queue.add(n);
+            }
+        }
+/*        boolean[] visited = new boolean[V];
+        Queue<Integer> queue = new LinkedList<>();
         visited[s]=true;
         queue.add(s);
         while(!queue.isEmpty()){
@@ -39,7 +53,7 @@ public class BFS_graph {
                     queue.add(n);
                 }
             }
-        }
+        }*/
 
     }
 

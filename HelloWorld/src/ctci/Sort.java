@@ -56,7 +56,7 @@ public class Sort {
     void mergeSort(int[] arr){
         int[] helper = new int[arr.length];
         arr = new int[]{9,0,3,1,7,6,5,2,8,4,1};
-        //mergeSort(arr, helper, 0, arr.length-1);
+        mergeSort(arr, helper, 0, arr.length-1);
 
         System.out.print("\nMergeSort::\t\t");
         for(int i=0;i<arr.length;i++)
